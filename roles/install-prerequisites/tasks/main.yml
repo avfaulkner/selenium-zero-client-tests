@@ -1,0 +1,14 @@
+---
+- name: Install prereqs on Linux
+  package:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - nodejs
+    - npm
+
+- name: Install browser driver - Chrome
+  shell: npm install -g chromedriver
+
+- name: Install selenium-side-runner
+  shell: npm install -g selenium-side-runner

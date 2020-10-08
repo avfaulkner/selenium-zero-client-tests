@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+  vars_files:
+    - group_vars/vars.yml
+  roles:
+    - install-prerequisites
+    - run-selenium-tests
+    - log-collection

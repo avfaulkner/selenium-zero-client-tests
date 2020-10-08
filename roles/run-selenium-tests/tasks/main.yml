@@ -1,0 +1,7 @@
+---
+- name: Test NTP setup
+  shell: selenium-side-runner files/zc-ntp-config.side
+
+# Run all tests in parallel in multiple browser windows, spread across all cores available on machine
+- name: Run all Selenium tests in parallel
+  shell: selenium-side-runner files/*.side
