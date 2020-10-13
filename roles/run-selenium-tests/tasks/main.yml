@@ -2,6 +2,22 @@
 - name: Test NTP setup
   shell: selenium-side-runner files/zc-ntp-config.side
 
+- name: Test profile download from MC
+  shell: selenium-side-runner files/mc-profile-dl.side
+
+- name: Test connection to MC
+  shell: selenium-side-runner files/mc-connect.side
+
+- name: Test blocked scancode feature (upcoming feature)
+  shell: selenium-side-runner files/zc-ntp-config.side
+
+#Certificate tests:
+#  - no cert
+#  - incorrect cert
+#  - expired cert
+#
+- name:
+
 # Run all tests in parallel in multiple browser windows, spread across all cores available on machine
 - name: Run all Selenium tests in parallel
   shell: selenium-side-runner files/*.side
