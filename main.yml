@@ -1,10 +1,23 @@
 ---
-- hosts: all
-  become: true
-  gather_facts: true
-  vars_files:
-    - group_vars/vars.yml
+#- hosts: localhost
+#  become: true
+#  gather_facts: true
+#  vars_files:
+#    - group_vars/vars.yml
+#  roles:
+#    - {hosts: localhost, connection: local, role: install-prerequisites}
+#    - {hosts: localhost, connection: local, role: run-selenium-tests}
+#    - {hosts: syslog, role: log-collection}
+
+
+
+- hosts: localhost
+  connection: local
   roles:
-    - install-prerequisites
+    - install-prerequisities
     - run-selenium-tests
-    - log-collection
+
+#- hosts: syslog
+#  roles:
+#    - log-collection
+

@@ -6,9 +6,27 @@
   with_items:
     - nodejs
     - npm
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver - Chrome
   shell: npm install -g chromedriver
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install selenium-side-runner
   shell: npm install -g selenium-side-runner
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
+- debug: var=ansible_facts
+
+- name: Verify Homebrew is installed
+  stat:
+    path: /usr/local/bin/brew
+  register: homebrew_check
+
+- name: Install nodejs on MacOS
+  homebrew:
+    name: nodejs
+    state: present
+  register: result
+  until: result is successful
+  when: homebrew_check.stat.exists
