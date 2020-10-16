@@ -1,6 +1,9 @@
 ---
 - name: Test NTP setup
   shell: selenium-side-runner files/zc-ntp-config.side
+  register: result
+
+- debug: var=result
 
 #- name: Test profile download from MC
 #  shell: selenium-side-runner files/mc-profile-dl.side
@@ -9,7 +12,7 @@
 #  shell: selenium-side-runner files/mc-connect.side
 #
 #- name: Test blocked scancode feature (upcoming feature)
-#  shell: selenium-side-runner files/zc-ntp-config.side
+#  shell: selenium-side-runner files/scancode.side
 
 #Certificate tests:
 #  - no cert

@@ -1,0 +1,10 @@
+---
+- name: configure rsyslog for zero client logs
+  copy:
+    src: files/rsyslog.conf
+    dest: /etc/rsyslog.conf
+
+- name: restart rsyslog
+  service:
+    name: rsyslog
+    state: restarted

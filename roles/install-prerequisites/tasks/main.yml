@@ -1,32 +1,73 @@
 ---
+#Linux
+- name: Use Python3
+  shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+- name: Install nodejs on Linux
+  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
 - name: Install prereqs on Linux
   package:
     name: "{{item}}"
     state: present
   with_items:
     - nodejs
-    - npm
+    - python-apt
+    - default-jdk
+    - xvfb # run chrome headlessly
+    - python3-pip
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install browser driver - Chrome
-  shell: npm install -g chromedriver
+- name: Install npm and dependencies
+  shell: sudo npm install npm-install-all -g
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install selenium-side-runner
-  shell: npm install -g selenium-side-runner
+  shell: sudo npm install -g selenium-side-runner
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- debug: var=ansible_facts
+- name: Install dependencies via pip
+  pip:
+    name: "{{item}}"
+  with_items:
+    - pyvirtualdisplay
+    - selenium
 
+- name: Install browser driver - Chrome
+  shell: sudo npm install -g chromedriver
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
+- name: Install browser driver for Chrome
+  unarchive:
+    src: http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+    dest: /usr/local/share/
+    remote_src: yes
+    mode: 774
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
+- name: Symlink Chromedriver to bin dir
+  become: true
+  shell: sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
+#Mac
 - name: Verify Homebrew is installed
   stat:
     path: /usr/local/bin/brew
   register: homebrew_check
+  when: ansible_distribution != "CentOS" or ansible_distribution != "Ubuntu"
 
 - name: Install nodejs on MacOS
   homebrew:
-    name: nodejs
+    name: node
     state: present
   register: result
   until: result is successful
+  when: homebrew_check.stat.exists
+
+- name: Install selenium
+  shell: npm install -g selenium-side-runner
+  when: homebrew_check.stat.exists
+
+- name: Install chromedriver
+  shell: sudo npm install -g chromedriver
   when: homebrew_check.stat.exists

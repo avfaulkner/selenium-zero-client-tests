@@ -1,23 +1,17 @@
 ---
-#- hosts: localhost
+#- hosts: syslog
 #  become: true
-#  gather_facts: true
-#  vars_files:
-#    - group_vars/vars.yml
 #  roles:
-#    - {hosts: localhost, connection: local, role: install-prerequisites}
-#    - {hosts: localhost, connection: local, role: run-selenium-tests}
-#    - {hosts: syslog, role: log-collection}
-
-
+#    - configure-rsyslog
 
 - hosts: localhost
+  become: true
   connection: local
   roles:
-    - install-prerequisities
+#    - install-prerequisites
     - run-selenium-tests
 
-#- hosts: syslog
-#  roles:
-#    - log-collection
+- hosts: syslog
+  roles:
+    - log-collection
 
