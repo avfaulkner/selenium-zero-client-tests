@@ -33,9 +33,9 @@
     - pyvirtualdisplay
     - selenium
 
-- name: Install browser driver - Chrome
-  shell: sudo npm install -g chromedriver
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+# - name: Install browser driver - Chrome
+#   shell: sudo npm install -g chromedriver
+#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver for Chrome
   unarchive:

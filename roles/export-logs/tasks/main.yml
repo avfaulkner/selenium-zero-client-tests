@@ -1,3 +1,6 @@
 ---
 - name: Export Zero Client syslogs to AWS S3
   shell: aws s3 cp /var/log/zero-client/zero-client.log s3://af-syslogs/
+
+# compare log file size from beginning of script vs now
+# add time delay
