@@ -2,9 +2,11 @@
 #Linux
 - name: Use Python3
   shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install nodejs on Linux
   shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install prereqs on Linux
   package:
@@ -32,6 +34,8 @@
   with_items:
     - pyvirtualdisplay
     - selenium
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
 
 # - name: Install browser driver - Chrome
 #   shell: sudo npm install -g chromedriver
@@ -39,7 +43,7 @@
 
 - name: Install browser driver for Chrome
   unarchive:
-    src: http://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+    src: https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
     dest: /usr/local/share/
     remote_src: yes
     mode: 774
@@ -48,6 +52,7 @@
 - name: Symlink Chromedriver to bin dir
   become: true
   shell: sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 #Mac
 - name: Verify Homebrew is installed
@@ -57,6 +62,7 @@
   when: ansible_distribution != "CentOS" or ansible_distribution != "Ubuntu"
 
 - name: Install nodejs on MacOS
+  become: false # can't run homebrew as root
   homebrew:
     name: node
     state: present
@@ -68,6 +74,14 @@
   shell: npm install -g selenium-side-runner
   when: homebrew_check.stat.exists
 
-- name: Install chromedriver
-  shell: sudo npm install -g chromedriver
+#- name: Install chromedriver
+#  shell: sudo npm install chromedriver --chromedriver_version=86.0.4240.22
+#  when: homebrew_check.stat.exists
+
+- name: Install browser driver for Chrome
+  unarchive:
+    src: https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_mac64.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+    mode: 766
   when: homebrew_check.stat.exists

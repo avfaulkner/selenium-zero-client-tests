@@ -1,6 +1,6 @@
 ---
 - name: Test NTP setup
-  shell: selenium-side-runner files/zc-ntp-config.side
+  shell: selenium-side-runner files/awi-tests.side
   register: result
 
 - debug: var=result
