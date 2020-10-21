@@ -4,9 +4,9 @@
 #   shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 #   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-# - name: Install nodejs on Linux
-#   shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+- name: Install nodejs on Linux
+  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install prereqs on Linux
   package:
@@ -21,17 +21,17 @@
     - google-chrome-stable
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-# - name: Install npm and dependencies
-#   shell: sudo npm install npm-install-all -g
-#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+- name: Install npm and dependencies
+  shell: sudo npm install npm-install-all -g
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-# - name: Install selenium-side-runner
-#   shell: sudo npm install -g selenium-side-runner
-#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+- name: Install selenium-side-runner
+  shell: sudo npm install -g selenium-side-runner
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-# - name: Install dependencies via pip
-#   shell: pip3 install pytest selenium pyvirtualdisplay virtualenv
-#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+- name: Install dependencies via pip
+  shell: pip3 install pytest selenium pyvirtualdisplay virtualenv
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver for Chrome
   unarchive:  
