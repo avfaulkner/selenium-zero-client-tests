@@ -1,0 +1,172 @@
+{
+  "id": "128ce4ec-5522-4933-9b4e-1aa6fbeac220",
+  "version": "2.0",
+  "name": "zc-ffs",
+  "url": "https://192.168.0.108",
+  "tests": [{
+    "id": "56d4dd43-26c6-4580-9a8f-b7160c336703",
+    "name": "ntp-firefox",
+    "commands": [{
+      "id": "68673700-a09f-454e-a5f6-41fe3cdba78f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c7e5d9ed-6071-4df0-af13-0bec255b17ac",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be9ccc62-2bd0-40da-becf-76aeaf82230c",
+      "comment": "",
+      "command": "click",
+      "target": "id=act0_16",
+      "targets": [
+        ["id=act0_16", "id"],
+        ["linkText=Time", "linkText"],
+        ["css=#act0_16", "css:finder"],
+        ["xpath=//a[contains(text(),'Time')]", "xpath:link"],
+        ["xpath=//a[@id='act0_16']", "xpath:attributes"],
+        ["xpath=//div[@id='menu1Content']/div/a[17]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/configuration/time.html')]", "xpath:href"],
+        ["xpath=//a[17]", "xpath:position"],
+        ["xpath=//a[contains(.,'Time')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "55e1b238-da92-4d33-90a3-8dac3c29e7b2",
+      "comment": "",
+      "command": "click",
+      "target": "name=enable_ntp",
+      "targets": [
+        ["name=enable_ntp", "name"],
+        ["css=tr:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='enable_ntp']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80a08cd9-133f-4ef5-82c4-1c2ba12a46c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) input:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(4) input:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@name='ntp_host_type'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[4]/td/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48db6b92-84f0-4e4c-be42-c38ae0c8a8dc",
+      "comment": "",
+      "command": "click",
+      "target": "name=ntp_dns_name",
+      "targets": [
+        ["name=ntp_dns_name", "name"],
+        ["css=#td_ntp_dns > input", "css:finder"],
+        ["xpath=//input[@name='ntp_dns_name']", "xpath:attributes"],
+        ["xpath=//div[@id='td_ntp_dns']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e4c39008-d567-40ad-8b2a-eccea3d53652",
+      "comment": "",
+      "command": "type",
+      "target": "name=ntp_dns_name",
+      "targets": [
+        ["name=ntp_dns_name", "name"],
+        ["css=#td_ntp_dns > input", "css:finder"],
+        ["xpath=//input[@name='ntp_dns_name']", "xpath:attributes"],
+        ["xpath=//div[@id='td_ntp_dns']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "pool.ntp.org"
+    }, {
+      "id": "a80e946f-6d58-40b7-ba19-52591796d94e",
+      "comment": "",
+      "command": "click",
+      "target": "id=time_zone_offset",
+      "targets": [
+        ["id=time_zone_offset", "id"],
+        ["css=#time_zone_offset", "css:finder"],
+        ["xpath=//select[@id='time_zone_offset']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[10]/td/select", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b65318e4-c696-42c7-8eb2-264b02cf6354",
+      "comment": "",
+      "command": "select",
+      "target": "id=time_zone_offset",
+      "targets": [],
+      "value": "label=(UTC-8:00) America/Vancouver"
+    }, {
+      "id": "2b47c988-ffe1-4df7-9c66-6c8cbc05183c",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(20)",
+      "targets": [
+        ["css=option:nth-child(20)", "css:finder"],
+        ["xpath=//option[@value='19']", "xpath:attributes"],
+        ["xpath=//select[@id='time_zone_offset']/option[20]", "xpath:idRelative"],
+        ["xpath=//option[20]", "xpath:position"],
+        ["xpath=//option[contains(.,'(UTC-8:00) America/Vancouver')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f71162e-6f6f-49d4-b827-940d150e899d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(8) > td",
+      "targets": [
+        ["css=tr:nth-child(8) > td", "css:finder"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[8]/td", "xpath:idRelative"],
+        ["xpath=//tr[8]/td", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "38d2d063-6dcf-4426-8986-76226781ed09",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(14) input:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(14) input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@value='Apply']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[14]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7e0a28d8-e574-4d77-8b20-37f825257337",
+      "comment": "",
+      "command": "click",
+      "target": "name=continue_button",
+      "targets": [
+        ["name=continue_button", "name"],
+        ["css=tr:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='continue_button']", "xpath:attributes"],
+        ["xpath=//div[@id='continue_button']/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ffd99337-c71e-4929-8a5c-2c899537b17e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["56d4dd43-26c6-4580-9a8f-b7160c336703"]
+  }],
+  "urls": ["https://192.168.0.108/"],
+  "plugins": []
+}

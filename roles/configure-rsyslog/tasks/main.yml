@@ -8,3 +8,9 @@
   service:
     name: rsyslog
     state: restarted
+
+- name: get initial syslog file size
+  shell: $(stat -c%s "/var/log/zero-client/zero-client.log")
+  register: filesize_initial
+
+- debug: var=filesize_initial

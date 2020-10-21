@@ -3,7 +3,6 @@
   shell: selenium-side-runner files/awi-tests.side
   register: result
 
-- debug: var=result
 
 #- name: Test profile download from MC
 #  shell: selenium-side-runner files/mc-profile-dl.side

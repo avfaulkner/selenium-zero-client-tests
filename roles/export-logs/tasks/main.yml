@@ -1,6 +1,24 @@
 ---
-- name: Export Zero Client syslogs to AWS S3
-  shell: aws s3 cp /var/log/zero-client/zero-client.log s3://af-syslogs/
-
 # compare log file size from beginning of script vs now
+- name: get initial syslog file size
+  shell: $(stat -c%s "/var/log/zero-client/zero-client.log")
+  register: filesize_final
+
+- debug: var=filesize_final
+
+- name: Archive the syslog file
+  archive: 
+    path: /var/log/zero-client/zero-client.log
+    dest: /var/log/zero-client/zero-client-log.zip
+    format: zip
+
+- name: Export Zero Client syslogs to AWS S3
+  shell: aws s3 cp /var/log/zero-client/zero-client-log.zip s3://af-syslogs/
+
 # add time delay
+- name: Wait for 1 minute before exporting logs
+  wait_for:
+    delay: 60 # delay playbook for 60 seconds
+    timeout: 0 # timeout after 0 seconds
+
+

@@ -7,7 +7,7 @@
 - hosts: localhost
   become: true
   roles:
-#   - install-prerequisites
+   - install-prerequisites
    - run-selenium-tests
 
 #- hosts: syslog
