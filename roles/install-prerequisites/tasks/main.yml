@@ -1,12 +1,12 @@
 ---
 #Linux
-- name: Use Python3
-  shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+# - name: Use Python3
+#   shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install nodejs on Linux
-  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+# - name: Install nodejs on Linux
+#   shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install prereqs on Linux
   package:
@@ -16,37 +16,29 @@
     - nodejs
     - python-apt
     - default-jdk
-    - xvfb # run chrome headlessly
+    - xvfb # X virtual framebuffer - run chrome headlessly
     - python3-pip
+    - google-chrome-stable
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install npm and dependencies
-  shell: sudo npm install npm-install-all -g
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+# - name: Install npm and dependencies
+#   shell: sudo npm install npm-install-all -g
+#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install selenium-side-runner
-  shell: sudo npm install -g selenium-side-runner
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+# - name: Install selenium-side-runner
+#   shell: sudo npm install -g selenium-side-runner
+#   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install dependencies via pip
-  pip:
-    name: "{{item}}"
-  with_items:
-    - pyvirtualdisplay
-    - selenium
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
-
-
-# - name: Install browser driver - Chrome
-#   shell: sudo npm install -g chromedriver
+# - name: Install dependencies via pip
+#   shell: pip3 install pytest selenium pyvirtualdisplay virtualenv
 #   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver for Chrome
-  unarchive:
+  unarchive:  
     src: https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip
     dest: /usr/local/share/
     remote_src: yes
-    mode: 774
+    mode: 766
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Symlink Chromedriver to bin dir
@@ -62,7 +54,6 @@
   when: ansible_distribution != "CentOS" or ansible_distribution != "Ubuntu"
 
 - name: Install nodejs on MacOS
-  become: false # can't run homebrew as root
   homebrew:
     name: node
     state: present
@@ -73,10 +64,6 @@
 - name: Install selenium
   shell: npm install -g selenium-side-runner
   when: homebrew_check.stat.exists
-
-#- name: Install chromedriver
-#  shell: sudo npm install chromedriver --chromedriver_version=86.0.4240.22
-#  when: homebrew_check.stat.exists
 
 - name: Install browser driver for Chrome
   unarchive:
