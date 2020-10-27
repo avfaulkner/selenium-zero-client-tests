@@ -3,6 +3,8 @@
   shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/chrome.side
   register: result
 
+- debug: var=result.stderr_lines
+
 
 #- name: Test profile download from MC
 #  shell: selenium-side-runner files/mc-profile-dl.side
