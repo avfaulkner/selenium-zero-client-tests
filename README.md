@@ -26,3 +26,6 @@ Run the script against a specific host or host category in the host file
 ansible-playbook -i hosts.ini main.yml -vv -l <instance IP or host category>
 ``` 
 
+## Notes
+- The connection to the Zero Client web interface must be trusted in order to run the Selenium tests in headless mode.
+    - It is assumed that the connection to the Zero Client web interface is trusted already. The ca cert should be added to the trusted root store, if necessary.
