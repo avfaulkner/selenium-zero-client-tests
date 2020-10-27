@@ -1,6 +1,6 @@
 ---
 - name: Test NTP setup
-  shell: selenium-side-runner files/awi-tests.side
+  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/chrome.side
   register: result
 
 
