@@ -4,21 +4,30 @@
 #   shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 #   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
-- name: Install nodejs on Linux
-  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
-
 - name: Install prereqs on Linux
   package:
     name: "{{item}}"
     state: present
   with_items:
-    - nodejs
+    - curl
     - python-apt
     - default-jdk
     - xvfb # X virtual framebuffer - run chrome headlessly
     - python3-pip
     - google-chrome-stable
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
+- name: Curl nodejs on Linux
+  shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+
+- name: Install nodejs on Linux
+  package:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - nodejs
+    - npm
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install npm and dependencies
