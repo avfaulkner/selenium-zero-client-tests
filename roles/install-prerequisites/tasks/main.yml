@@ -40,7 +40,7 @@
 
 - name: Install dependencies via pip
   shell: pip3 install pytest selenium pyvirtualdisplay virtualenv
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
+#  when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver for Chrome
   unarchive:  
@@ -63,11 +63,15 @@
   when: ansible_distribution != "CentOS" or ansible_distribution != "Ubuntu"
 
 - name: Install nodejs on MacOS
+  become: false
   homebrew:
-    name: node
+    name: "{{item}}"
     state: present
   register: result
   until: result is successful
+  with_items:
+    - node
+    - gnu-tar
   when: homebrew_check.stat.exists
 
 - name: Install selenium
@@ -79,5 +83,15 @@
     src: https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_mac64.zip
     dest: /usr/local/bin/
     remote_src: yes
+    mode: 766
+  when: homebrew_check.stat.exists
+
+- name: Install browser driver for Firefox
+  unarchive:
+    src: https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-macos.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    owner: afaulkner
+    group: admin
     mode: 766
   when: homebrew_check.stat.exists
