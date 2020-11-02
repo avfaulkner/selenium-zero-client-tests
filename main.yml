@@ -1,16 +1,16 @@
 ---
-#- hosts: syslog
-#  become: true
-#  roles:
-#   - configure-rsyslog
+- hosts: syslog
+  become: true
+  roles:
+   - configure-rsyslog
 
 - hosts: localhost
   roles:
-#   - install-prerequisites
+   - install-prerequisites
    - run-selenium-tests
 
-#- hosts: syslog
-#  become: true
-#  roles:
-#    - export-logs
+- hosts: syslog
+  become: true
+  roles:
+    - export-logs
 
