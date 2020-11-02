@@ -1,0 +1,183 @@
+{
+  "id": "997a4e1b-3c5b-45e9-a644-011892cb8b73",
+  "version": "2.0",
+  "name": "ntp",
+  "url": "https://192.168.0.108",
+  "tests": [{
+    "id": "0b80f78b-a493-4011-a6dc-03c84512b32b",
+    "name": "ntptest",
+    "commands": [{
+      "id": "fbb7108d-c6a0-4bd9-b23b-196fd18edb22",
+      "comment": "",
+      "command": "open",
+      "target": "/login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd38b81e-50b7-4abd-80df-c2f76dd81dbf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x877",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41491559-e6ee-479c-9a8c-dedbc6d0cd9b",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//input[@id='login']", "xpath:attributes"],
+        ["xpath=//form[@id='login_visible_form']/table/tbody/tr[4]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98622357-9104-4bf7-bc18-d96cdd4bc7e5",
+      "comment": "",
+      "command": "click",
+      "target": "id=act0_16",
+      "targets": [
+        ["id=act0_16", "id"],
+        ["linkText=Time", "linkText"],
+        ["css=#act0_16", "css:finder"],
+        ["xpath=//a[contains(text(),'Time')]", "xpath:link"],
+        ["xpath=//a[@id='act0_16']", "xpath:attributes"],
+        ["xpath=//div[@id='menu1Content']/div/a[17]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/configuration/time.html')]", "xpath:href"],
+        ["xpath=//a[17]", "xpath:position"],
+        ["xpath=//a[contains(.,'Time')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a2a4d66-6ef9-4a4d-a8a3-df34eed94e4c",
+      "comment": "",
+      "command": "click",
+      "target": "name=enable_ntp",
+      "targets": [
+        ["name=enable_ntp", "name"],
+        ["css=tr:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='enable_ntp']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11fe2eb5-5908-4e44-b3a2-d770f407d33e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(4) input:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(4) input:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@name='ntp_host_type'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[4]/td/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0707885f-5085-45e5-87f3-95db95b680b6",
+      "comment": "",
+      "command": "click",
+      "target": "name=ntp_dns_name",
+      "targets": [
+        ["name=ntp_dns_name", "name"],
+        ["css=#td_ntp_dns > input", "css:finder"],
+        ["xpath=//input[@name='ntp_dns_name']", "xpath:attributes"],
+        ["xpath=//div[@id='td_ntp_dns']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0355ba61-98e7-433d-8ee4-df751515f540",
+      "comment": "",
+      "command": "type",
+      "target": "name=ntp_dns_name",
+      "targets": [
+        ["name=ntp_dns_name", "name"],
+        ["css=#td_ntp_dns > input", "css:finder"],
+        ["xpath=//input[@name='ntp_dns_name']", "xpath:attributes"],
+        ["xpath=//div[@id='td_ntp_dns']/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "pool.ntp.org"
+    }, {
+      "id": "23bcebc4-0191-4980-9b1d-21167c21dfb6",
+      "comment": "",
+      "command": "click",
+      "target": "id=time_zone_offset",
+      "targets": [
+        ["id=time_zone_offset", "id"],
+        ["css=#time_zone_offset", "css:finder"],
+        ["xpath=//select[@id='time_zone_offset']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[10]/td/select", "xpath:idRelative"],
+        ["xpath=//tr[10]/td/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d79eddb-fa5a-4ac3-87d3-9344d3a6e485",
+      "comment": "",
+      "command": "select",
+      "target": "id=time_zone_offset",
+      "targets": [],
+      "value": "label=(UTC-8:00) America/Vancouver"
+    }, {
+      "id": "8af14e12-6529-4027-9113-19d5194d500b",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(14) input:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(14) input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@value='Apply']", "xpath:attributes"],
+        ["xpath=//form[@id='visible_form']/table/tbody/tr[14]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b8695b7d-21af-48e2-83d5-cc64e54803de",
+      "comment": "",
+      "command": "click",
+      "target": "name=continue_button",
+      "targets": [
+        ["name=continue_button", "name"],
+        ["css=tr:nth-child(3) input", "css:finder"],
+        ["xpath=//input[@name='continue_button']", "xpath:attributes"],
+        ["xpath=//div[@id='continue_button']/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "16ec9c15-1eec-4209-ba9a-8115661d581c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Log Out",
+      "targets": [
+        ["linkText=Log Out", "linkText"],
+        ["css=#logout > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Log Out')]", "xpath:link"],
+        ["xpath=//div[@id='logout']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/cgi-bin/logout?logout=1')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Log Out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "091c392c-3708-40dc-aed5-bc01f6c22ac8",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e52ab890-b64f-4800-9fe1-4bc90f6d098e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0b80f78b-a493-4011-a6dc-03c84512b32b"]
+  }],
+  "urls": ["https://192.168.0.108/"],
+  "plugins": []
+}
