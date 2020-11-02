@@ -1,4 +1,35 @@
 ---
+- name: Run apt update
+  apt:
+    name: "*"
+    state: latest
+    force_apt_get: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Verify if reboot is required
+  stat:
+    path: /var/run/reboot-required
+  register: restart
+  when: ansible_distribution == "Ubuntu"
+- debug: var=restart.rc
+
+- name: Reboot immediately if there was a change (Ubuntu)
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  when:
+    - ansible_distribution == "Ubuntu"
+    - restart.stat.exists == true
+
+- name: Wait for the reboot to complete if there was a change
+  wait_for_connection:
+    connect_timeout: 1 # Maximum number of seconds to wait for a connection to happen before closing and retrying
+    sleep: 5 # Number of seconds to sleep between checks
+    delay: 5 # Number of seconds to wait before starting to poll
+    timeout: 300 # Maximum number of seconds to wait for
+  when: restart.stat.exists == true
+
+
 - name: configure rsyslog for zero client logs
   copy:
     src: files/rsyslog.conf
@@ -14,3 +45,6 @@
   register: filesize_initial
 
 - debug: var=filesize_initial
+
+- set_fact:
+    initial_log_file: $(stat -c%s "/var/log/zero-client/zero-client.log")
