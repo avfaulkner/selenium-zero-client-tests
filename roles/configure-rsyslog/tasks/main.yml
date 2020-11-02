@@ -6,12 +6,18 @@
     force_apt_get: yes
   when: ansible_distribution == "Ubuntu"
 
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: Verify if reboot is required
   stat:
     path: /var/run/reboot-required
   register: restart
   when: ansible_distribution == "Ubuntu"
-- debug: var=restart.rc
+- debug: var=restart
 
 - name: Reboot immediately if there was a change (Ubuntu)
   shell: "sleep 5 && reboot"
@@ -34,6 +40,9 @@
   copy:
     src: files/rsyslog.conf
     dest: /etc/rsyslog.conf
+    owner: root
+    group: root
+    mode: 0755
 
 - name: restart rsyslog
   service:

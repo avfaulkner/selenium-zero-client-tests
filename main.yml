@@ -10,6 +10,7 @@
    - run-selenium-tests
 
 #- hosts: syslog
+#  become: true
 #  roles:
 #    - export-logs
 
