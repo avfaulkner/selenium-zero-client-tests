@@ -1,0 +1,6 @@
+---
+ # destroy syslog server
+- name: Destroy syslog server
+  shell: cd /Users/afaulkner/codes/terraform/syslog-server/aws && terraform destroy -auto-approve
+  register: result
+- debug: msg=result

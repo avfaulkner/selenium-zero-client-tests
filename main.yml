@@ -1,4 +1,8 @@
 ---
+- hosts: localhost
+  roles:
+    - provision-syslog-server
+
 - hosts: syslog
   become: true
   roles:
@@ -14,3 +18,6 @@
   roles:
     - export-logs
 
+#- hosts: localhost
+#  roles:
+#    - destroy-syslog-server

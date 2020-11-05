@@ -1,12 +1,5 @@
 ---
- # compare log file size from beginning of script vs now
-- name: Get initial syslog file size
-  shell: stat -c%s "/var/log/zero-client/zero-client.log"
-  register: filesize_final
-
-- debug: var=filesize_final
-
-- name: Install Python
+- name: Install Python, awscli
   package:
     name: "{{item}}"
     state: present

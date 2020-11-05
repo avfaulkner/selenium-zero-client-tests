@@ -1,0 +1,28 @@
+---
+#provision syslog server
+#- name: Provision syslog server
+#  shell: cd /Users/afaulkner/codes/terraform/syslog-server/aws && terraform apply -auto-approve
+#  register: tfoutput
+#- debug: var=tfoutput
+#
+#- name: Wait for syslog to provision
+#  wait_for_connection:
+#    sleep: 300 #wait for 5 minutes before moving on
+
+- name: Get terraform output
+  shell: cd /Users/afaulkner/codes/terraform/syslog-server/aws && terraform output
+  register: tfoutput
+
+
+# Get public IP of syslog server from task output
+- set_fact:
+    syslogip: "{{tfoutput.stdout_lines[5] |  regex_search('[0-9]+.[0-9]+.[0-9]+.[0-9]+') }}"
+- debug: msg="{{syslogip}}"
+
+- name: Add host to inventory/host group 'syslog'
+  add_host:
+    name: "{{ syslogip }}"
+    groups: syslog
+    inventory_dir: hosts.ini
+
+
