@@ -25,4 +25,3 @@
     groups: syslog
     inventory_dir: hosts.ini
 
-

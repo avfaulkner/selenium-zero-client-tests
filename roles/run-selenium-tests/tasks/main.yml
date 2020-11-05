@@ -1,6 +1,7 @@
 ---
 - name: Test NTP setup
   shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/chrome.side
+#  shell: selenium-side-runner files/test.side
   register: result
 
 - debug: var=result.stderr_lines

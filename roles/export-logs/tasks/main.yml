@@ -31,10 +31,11 @@
 - name: Export Zero Client syslogs to AWS S3
   shell: aws s3 cp /var/log/zero-client/zero-client-log.zip s3://af-syslogs/auto-syslog/
 
-# add time delay
-#- name: Wait for 1 minute before ending playbook
-#  wait_for:
-#    delay: 60 # delay playbook for 60 seconds
-#    timeout: 0 # timeout after 0 seconds
+# add time delay before tf destroy role
+- name: Wait for 1 minute before ending playbook
+  wait_for:
+    delay: 60 # delay playbook for 60 seconds
+    timeout: 0 # timeout after 0 seconds
+
 
 

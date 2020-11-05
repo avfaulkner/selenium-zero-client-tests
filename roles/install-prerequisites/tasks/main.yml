@@ -1,11 +1,4 @@
 ---
-- name: Add syslog server to known hosts file
-  known_hosts:
-    path: ~/.ssh/known_hosts
-    name: "{{syslogip}}"
-    key: ~/.ssh/syslog_key.pub
-    state: present
-
 #Linux
 # - name: Use Python3
 #   shell: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
