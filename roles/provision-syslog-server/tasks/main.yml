@@ -16,21 +16,23 @@
 
 # Get public IP of syslog server from task output
 - set_fact:
-    syslogip: "{{tfoutput.stdout_lines[5] |  regex_search('[0-9]+.[0-9]+.[0-9]+.[0-9]+') }}"
-    ip1: syslogip[0]
-    ip2: syslogip[1]
-    ip3: syslogip[2]
-    ip4: syslogip[3]
+    syslogip: "{{tfoutput.stdout_lines[5] |  regex_search('[0-9]+.[0-9]+.[0-9]+.[0-9]+')}}"
+
+- set_fact:
+    ip1: "{{syslogip.split('.')[0]}}"
+    ip2: "{{syslogip.split('.')[1]}}"
+    ip3: "{{syslogip.split('.')[2]}}"
+    ip4: "{{syslogip.split('.')[3]}}"
+
 - debug: msg="{{syslogip}}"
 - debug: msg="{{ip1}}"
+- debug: msg="{{ip2}}"
+- debug: msg="{{ip3}}"
+- debug: msg="{{ip4}}"
 
 - name: Add host to inventory/host group 'syslog'
   add_host:
     name: "{{ syslogip }}"
     groups: syslog
     inventory_dir: hosts.ini
-
-
-# - name: Add host to Zero Client AWI
-
 

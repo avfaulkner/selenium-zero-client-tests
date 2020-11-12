@@ -1,6 +1,6 @@
 ---
-- name: Test NTP setup
-  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/chrome.side
+- name: Setup syslog connection
+  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/syslog_server.side.j2
 #  shell: selenium-side-runner files/test.side
   register: result
 
