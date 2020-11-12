@@ -10,7 +10,7 @@
 #    sleep: 300 #wait for 5 minutes before moving on
 
 - name: Get terraform output
-  shell: cd /Users/afaulkner/codes/terraform/syslog-server/aws && terraform output
+  shell: "cd {{tf_path}} && terraform output"
   register: tfoutput
 
 
