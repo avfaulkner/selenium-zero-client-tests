@@ -7,15 +7,65 @@ input = 'zero-client.log'
 output = 'parsed.txt'
 
 match_list = []
+
+keyword_list = [
+"MGMT_SYS:Firmware Version",
+"MGMT_USB:mgmt_usb_dds",
+"unauthorized",
+"MGMT_UI:SUCCESSFUL web login",
+"web login",
+"DISCONNECT_CAUSE",
+"scancode",
+"MGMT_PEM:PEM_MANAGED.CONNECT_TO_EM",
+"WEBSOCKET:tera_socket_client_connect failed",
+"MGMT_FW_PROV:Download complete",
+"Previous Firmware Build",
+"MGMT_EMT:PemCommandTransaction Commit",
+"NTP time",
+"MGMT_SYS:SESSION ACTIVE",
+"NOT_AUTHORIZED",
+"MGMT_SYS:(net_cback):",
+"Network is down",
+"MGMT_PCOIP_DATA:RTT",
+"SESSION ACTIVE",
+"rtt last",
+"MGMT_IMG :log",
+"MGMT_PEM:Certificate store",
+"certificate",
+"issued by",
+"Cert not valid",
+"fingerprint match result",
+"Certificate fingerprint was used to verify and trust",
+"MGMT_PEM:EM passed SSL verification",
+"Trusted result: FAILED",
+"EM did not meet the full certificate verification requirement",
+"Leaf certificate FAILED",
+"MGMT_PEM:Certificate verification overall result:",
+"MGMT_PEM:SHA256 fingerprint match result:",
+"MGMT_PCB:Certificate verification overall result:",
+"MGMT_PCB:Hostname result:",
+"MGMT_PCB:Trusted setting",
+"MGMT_PCB:Self-signed setting",
+"MGMT_PCB:SHA256 fingerprint match setting",
+"MGMT_PCB:Hostname setting",
+"MGMT_PCB:Expected hostname",
+"MGMT_SSL:verify_validity_time",
+"MGMT_PEM:Trusted result",
+"MGMT_PEM:Validity result",
+"MGMT_PEM:SHA256 fingerprint match result",
+"MGMT_PCB:Revocation result",
+"MGMT_PEM:Server certificate"
+]
  
 try:
     with io.open(input, mode = 'r') as f:
 #     with io.open(input, mode = 'r', encoding='utf-16', errors = 'replace') as f: (if running on WSL)
         lines = f.readlines()
         for line in lines:
-            if line.lower().find('web login'.lower()) > 0:
-#                 print(line)
-                match_list.append(line)
+            for item in keyword_list:
+                if line.lower().find('web login'.lower()) > 0:
+    #                 print(line)
+                    match_list.append(line)
 except IOError:
     print("the file you are trying to open doesn't exist.")
 
