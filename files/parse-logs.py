@@ -12,12 +12,12 @@ keyword_list = [
 "MGMT_SYS:Firmware Version",
 "MGMT_USB:mgmt_usb_dds",
 "unauthorized",
-"MGMT_UI:SUCCESSFUL web login",
 "web login",
+"web logout",
 "DISCONNECT_CAUSE",
 "scancode",
 "MGMT_PEM:PEM_MANAGED.CONNECT_TO_EM",
-"WEBSOCKET:tera_socket_client_connect failed",
+"WEBSOCKET:tera_socket_client_connect",
 "MGMT_FW_PROV:Download complete",
 "Previous Firmware Build",
 "MGMT_EMT:PemCommandTransaction Commit",
@@ -37,9 +37,9 @@ keyword_list = [
 "fingerprint match result",
 "Certificate fingerprint was used to verify and trust",
 "MGMT_PEM:EM passed SSL verification",
-"Trusted result: FAILED",
+"Trusted result: ",
 "EM did not meet the full certificate verification requirement",
-"Leaf certificate FAILED",
+"Leaf certificate",
 "MGMT_PEM:Certificate verification overall result:",
 "MGMT_PEM:SHA256 fingerprint match result:",
 "MGMT_PCB:Certificate verification overall result:",
@@ -63,7 +63,7 @@ try:
         lines = f.readlines()
         for line in lines:
             for item in keyword_list:
-                if line.lower().find('web login'.lower()) > 0:
+                if line.lower().find(item.lower()) > 0:
     #                 print(line)
                     match_list.append(line)
 except IOError:
