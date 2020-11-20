@@ -9,12 +9,14 @@
 #  become: true
 #  roles:
 #   - configure-rsyslog
-#
+
 - hosts: localhost
+  vars_files:
+    - group_vars/vars.yml
   roles:
 #   - install-prerequisites
    - run-selenium-tests
-#
+
 #- hosts: syslog
 #  become: true
 #  roles:

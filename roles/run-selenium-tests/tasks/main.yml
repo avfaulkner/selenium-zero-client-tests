@@ -1,10 +1,12 @@
 ---
+- debug: "{{ip0}}"
+
 - name: Setup syslog connection
-  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/syslog_server.side.j2
-#  shell: selenium-side-runner files/test.side
+##  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/syslog_server.side.j2
+  shell: python files/all-selenium-tests.py {{ip0}} {{ip1}} {{ip2}} {{ip3}}
   register: result
 
-- debug: var=result.stderr_lines
+- debug: var=result
 
 
 #- name: Test profile download from MC
