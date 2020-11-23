@@ -3,4 +3,3 @@
 - name: Destroy syslog server
   shell: "cd {{tf_path}} && terraform destroy -auto-approve"
   register: result
-- debug: msg=result

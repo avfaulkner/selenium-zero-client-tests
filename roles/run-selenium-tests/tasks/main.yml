@@ -1,7 +1,5 @@
 ---
-- debug: "{{ip0}}"
-
-- name: Setup syslog connection
+- name: Run Selenium tests against Zero Client via AWI (headless)
 ##  shell: selenium-side-runner -c "goog:chromeOptions.args=[--headless,—nogpu] browserName=chrome" files/syslog_server.side.j2
   shell: python files/all-selenium-tests.py {{ip0}} {{ip1}} {{ip2}} {{ip3}}
   register: result

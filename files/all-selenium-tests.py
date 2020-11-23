@@ -27,10 +27,6 @@ ip0 = sys.argv[1]
 ip1 = sys.argv[2]
 ip2 = sys.argv[3]
 ip3 = sys.argv[4]
-# ip0 = os.environ['ip0']
-# ip1 = os.environ['ip1']
-# ip2 = os.environ['ip2']
-# ip3 = os.environ['ip3']
 
 # login
 def login():
@@ -54,6 +50,16 @@ def syslog_config():
     driver.find_element(By.NAME, "syslog_host2").send_keys(ip2)
     driver.find_element(By.NAME, "syslog_host3").click()
     driver.find_element(By.NAME, "syslog_host3").send_keys(ip3)
+    driver.find_element(By.CSS_SELECTOR, "tr:nth-child(1) input:nth-child(2)").click()
+    driver.find_element(By.NAME, "continue_button").click()
+
+# disable syslog - used for initial testing of script only
+def syslog_disable():
+    driver.get("https://192.168.0.108/diagnostics/event_log.html")
+    element = driver.find_element(By.NAME, "syslog_host0")
+    actions = ActionChains(driver)
+    actions.double_click(element).perform()
+    driver.find_element(By.NAME, "enable_syslog").click()
     driver.find_element(By.CSS_SELECTOR, "tr:nth-child(1) input:nth-child(2)").click()
     driver.find_element(By.NAME, "continue_button").click()
 
@@ -90,6 +96,7 @@ def main():
     syslog_config()
     ntp_enable()
     ntp_disable()
+#     syslog_disable()
     logout()
 
 main()

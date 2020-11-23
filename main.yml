@@ -5,25 +5,25 @@
   roles:
     - provision-syslog-server
 
-#- hosts: syslog
-#  become: true
-#  roles:
-#   - configure-rsyslog
+- hosts: syslog
+  become: true
+  roles:
+   - configure-rsyslog
 
 - hosts: localhost
   vars_files:
     - group_vars/vars.yml
   roles:
-#   - install-prerequisites
+   - install-prerequisites
    - run-selenium-tests
 
-#- hosts: syslog
-#  become: true
-#  roles:
-#    - export-logs
+- hosts: syslog
+  become: true
+  roles:
+    - export-logs
 
-#- hosts: localhost
-#  vars_files:
-#    - group_vars/vars.yml
-#  roles:
-#    - destroy-syslog-server
+- hosts: localhost
+  vars_files:
+    - group_vars/vars.yml
+  roles:
+    - destroy-syslog-server

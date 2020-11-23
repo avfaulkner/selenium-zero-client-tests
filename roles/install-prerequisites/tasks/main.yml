@@ -39,7 +39,7 @@
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install dependencies via pip
-  shell: pip3 install pytest selenium pyvirtualdisplay virtualenv
+  shell: pip3 install pytest selenium pyvirtualdisplay virtualenv pyyaml
   when: ansible_distribution == "CentOS" or ansible_distribution == "Ubuntu"
 
 - name: Install browser driver for Chrome
@@ -94,4 +94,8 @@
     owner: afaulkner
     group: admin
     mode: 766
+  when: homebrew_check.stat.exists
+
+- name: Install dependencies via pip
+  shell: pip3 install pytest pyyaml
   when: homebrew_check.stat.exists
