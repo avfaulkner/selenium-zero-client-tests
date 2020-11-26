@@ -1,0 +1,3 @@
+[submodule "syslog-server"]
+	path = syslog-server
+	url = https://github.com/avfaulkner/syslog-server.git
