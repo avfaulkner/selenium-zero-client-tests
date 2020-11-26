@@ -5,7 +5,7 @@ The Zero Client will send the resulting logs to an external syslog server. \
 After the tests, the syslogs will be zipped and shipped to a persistent storage location, \
 such as an S3 bucket, after which the syslog server will be shut down. 
 
-Please see the syslog-server/README.md file for more info on the server infrastructure and its requirements. 
+Please see the syslog-server/README.md file for more info on the syslog server infrastructure and its requirements. 
 
 ## Requirements
 ### Tooling
