@@ -1,7 +1,7 @@
 ---
 #provision syslog server
 - name: Provision syslog server
-  shell: cd /Users/afaulkner/codes/terraform/syslog-server/aws && terraform apply -auto-approve
+  shell: "cd {{tf_path}} && terraform apply -auto-approve"
   register: tfoutput
 - debug: var=tfoutput
 

@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-from jinja2 import *
 import pytest
 import time
 import json
