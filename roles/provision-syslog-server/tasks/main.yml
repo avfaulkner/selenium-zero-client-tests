@@ -1,4 +1,8 @@
 ---
+# initialize syslog terraform
+- name: Initialize syslog terraform
+  shell: "cd {{tf_path}} && terraform init"
+
 #provision syslog server
 - name: Provision syslog server
   shell: "cd {{tf_path}} && terraform apply -auto-approve"

@@ -1,4 +1,10 @@
 ---
+- name: Cleanup Zero Client to prepare for future tests (disable syslog)
+  shell: python files/cleanup.py
+  register: result
+
+- debug: var=result
+
  # destroy syslog server
 - name: Destroy syslog server
   shell: "cd {{tf_path}} && terraform destroy -auto-approve"
