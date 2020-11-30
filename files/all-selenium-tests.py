@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+import jinja2
 import pytest
 import time
 import json
@@ -26,16 +27,17 @@ ip0 = sys.argv[1]
 ip1 = sys.argv[2]
 ip2 = sys.argv[3]
 ip3 = sys.argv[4]
+zc_ip = sys.argv[5]
 
 # login
 def login():
-    driver.get("https://192.168.0.108/login.html")
+    driver.get("https://"+zc_ip+"/login.html")
     driver.set_window_size(1440, 877)
     driver.find_element(By.ID, "login").click()
 
 # assign syslog server
 def syslog_config():
-    driver.get("https://192.168.0.108/diagnostics/event_log.html")
+    driver.get("https://"+zc_ip+"/diagnostics/event_log.html")
     element = driver.find_element(By.NAME, "syslog_host0")
     actions = ActionChains(driver)
     actions.double_click(element).perform()
@@ -54,7 +56,7 @@ def syslog_config():
 
 # disable syslog - used for initial testing of script only
 def syslog_disable():
-    driver.get("https://192.168.0.108/diagnostics/event_log.html")
+    driver.get("https://"+zc_ip+"/diagnostics/event_log.html")
     element = driver.find_element(By.NAME, "syslog_host0")
     actions = ActionChains(driver)
     actions.double_click(element).perform()
@@ -64,7 +66,7 @@ def syslog_disable():
 
 # enable and configure ntp
 def ntp_enable():
-    driver.get("https://192.168.0.108/configuration/time.html")
+    driver.get("https://"+zc_ip+"/configuration/time.html")
     driver.find_element(By.NAME, "enable_ntp").click()
     driver.find_element(By.CSS_SELECTOR, "tr:nth-child(4) input:nth-child(2)").click()
     driver.find_element(By.NAME, "ntp_dns_name").click()

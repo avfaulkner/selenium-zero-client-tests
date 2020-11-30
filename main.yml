@@ -19,6 +19,8 @@
 
 - hosts: syslog
   become: true
+  vars_files:
+    - group_vars/vars.yml
   roles:
     - export-logs
 

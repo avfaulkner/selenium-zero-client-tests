@@ -17,9 +17,10 @@ This may be run as a playbook from a local workstation.
 
 ## Steps 
 1. Clone the repo onto the local workstation to run the playbook locally.
-2. Update syslog-server/terraform.tfvars with all desired variables. 
+2. Update group_vars/vars.yml with your desired variables.
+3. Update syslog-server/terraform.tfvars with your desired variables. 
 3. Update the hosts.ini file with the remote syslog server's connection variables. 
-4. Run the script:
+5. Run the script:
 ```
 ansible-playbook -i hosts.ini main.yml -vv
 ```

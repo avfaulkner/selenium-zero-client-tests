@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+import jinja2
 import pytest
 import time
 import json
@@ -22,15 +23,17 @@ chrome_options.add_argument("--window-size=1920x1080")
 
 driver = webdriver.Chrome(chrome_options=chrome_options)
 
+zc_ip = sys.argv[1]
+
 # login
 def login():
-    driver.get("https://192.168.0.108/login.html")
+    driver.get("https://"+zc_ip+"/login.html")
     driver.set_window_size(1440, 877)
     driver.find_element(By.ID, "login").click()
 
 # disable syslog - used for initial testing of script only
 def syslog_disable():
-    driver.get("https://192.168.0.108/diagnostics/event_log.html")
+    driver.get("https://"+zc_ip+"/diagnostics/event_log.html")
     element = driver.find_element(By.NAME, "syslog_host0")
     actions = ActionChains(driver)
     actions.double_click(element).perform()

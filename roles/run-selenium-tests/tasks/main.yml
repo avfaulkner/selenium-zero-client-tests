@@ -1,6 +1,6 @@
 ---
 - name: Run Selenium tests against Zero Client via AWI (headless)
-  shell: python files/all-selenium-tests.py {{ip0}} {{ip1}} {{ip2}} {{ip3}}
+  shell: python files/all-selenium-tests.py {{ip0}} {{ip1}} {{ip2}} {{ip3}} {{zc_ip}}
   register: result
 
 - debug: var=result
