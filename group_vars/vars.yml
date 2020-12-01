@@ -1,2 +1,2 @@
 tf_path: syslog-server/aws
-zc_ip: "192.168.0.108"
+zc_ip: "" # place Zero Client IP address here
